@@ -1,0 +1,61 @@
+﻿@model IntegracaoPagador.ViewModels.SoapViewModel
+@{
+    ViewBag.Title = "Integração Pagador - Soap";
+}
+
+<h2>Informações do Pedido</h2>
+
+@using (Html.BeginForm("Authorize", "Soap", 1))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerName)
+        @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Country)
+        @Html.TextBoxFor(m => m.Country, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Currency)
+        @Html.TextBoxFor(m => m.Currency, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Amount)
+        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CardNumber)
+        @Html.TextBoxFor(m => m.CardNumber, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Holder)
+        @Html.TextBoxFor(m => m.Holder, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Expiration)
+        @Html.TextBoxFor(m => m.Expiration, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SecurityCode)
+        @Html.TextBoxFor(m => m.SecurityCode, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.NumberPayments)
+        @Html.TextBoxFor(m => m.NumberPayments, new { @class = "form-control", autofocus = "autofocus" })
+    </div>
+
+    <button id="button-enviar" type="submit" class="btn btn-primary btn-lg">Enviar</button>
+}
+
+@section scripts{}
+
+
+

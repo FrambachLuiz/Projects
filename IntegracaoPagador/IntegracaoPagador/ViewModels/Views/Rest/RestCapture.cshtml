@@ -1,0 +1,24 @@
+﻿@model IntegracaoPagador.ViewModels.RestViewModel
+
+
+@{
+    ViewBag.Title = "SoapCapture";
+}
+
+<h2>RestResult</h2>
+
+<ul class="gigs voffset4">
+    <h2>Transaction Return</h2>
+
+    <li>Name : @Model.Name</li>
+    <li>Type : @Model.Type</li>
+    <li>Amount: @Model.Amount</li>
+    <li>Provider: @Model.Provider</li>
+    <li>Installments: @Model.Installments</li>
+    <li>CardNumber: @Model.CardNumber</li>
+    <li>Holder : @Model.Holder </li>
+    <li>ExpirationDate : @Model.ExpirationDate</li>
+    <li>SecurityCode: @Model.SecurityCode</li>
+    <li>Brand: @Model.Brand</li>
+
+</ul>
