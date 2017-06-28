@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCode", "DemoCode\DemoCode.csproj", "{684F914D-1657-47A8-965B-DFC52982DAF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCode.Tests", "DemoCode.Tests\DemoCode.Tests.csproj", "{81050F32-CD1B-4432-B996-1D03A0C38A40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo1", "Demo1", "{DF1A84B9-C968-4870-826E-57155CB1730A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{80C94C60-0A29-4B5B-80D8-B9FEDEBD6766}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{684F914D-1657-47A8-965B-DFC52982DAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{684F914D-1657-47A8-965B-DFC52982DAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{684F914D-1657-47A8-965B-DFC52982DAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{684F914D-1657-47A8-965B-DFC52982DAF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81050F32-CD1B-4432-B996-1D03A0C38A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81050F32-CD1B-4432-B996-1D03A0C38A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81050F32-CD1B-4432-B996-1D03A0C38A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81050F32-CD1B-4432-B996-1D03A0C38A40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{684F914D-1657-47A8-965B-DFC52982DAF1} = {DF1A84B9-C968-4870-826E-57155CB1730A}
+		{81050F32-CD1B-4432-B996-1D03A0C38A40} = {80C94C60-0A29-4B5B-80D8-B9FEDEBD6766}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://gighubluiz.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DemoCode.Tests\\DemoCode.Tests.csproj
+		SccProjectTopLevelParentUniqueName1 = DemoCode.sln
+		SccProjectName1 = DemoCode.Tests
+		SccLocalPath1 = DemoCode.Tests
+		SccProjectUniqueName2 = DemoCode\\DemoCode.csproj
+		SccProjectTopLevelParentUniqueName2 = DemoCode.sln
+		SccProjectName2 = DemoCode
+		SccLocalPath2 = DemoCode
+	EndGlobalSection
+EndGlobal

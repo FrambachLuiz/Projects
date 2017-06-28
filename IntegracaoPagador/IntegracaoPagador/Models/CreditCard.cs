@@ -1,6 +1,8 @@
-﻿namespace IntegracaoPagador.Models
+﻿using IntegracaoPagador.Models.Interface;
+
+namespace IntegracaoPagador.Models
 {
-    public class CreditCard
+    public class CreditCard : ICreditCard
     {
         public string CardNumber { get; set; }
         public string Holder { get; set; }

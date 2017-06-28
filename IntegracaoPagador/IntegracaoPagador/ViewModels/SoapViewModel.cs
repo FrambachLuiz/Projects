@@ -7,7 +7,7 @@ namespace IntegracaoPagador.ViewModels
     {
 
         //Fixas
-        public string MerchanId { get; }
+        public string MerchanId { get; set; }
         public short PaymentMethod { get; }
         public int TypePayment { get; }
         public string OrderId { get; set; }
@@ -26,11 +26,10 @@ namespace IntegracaoPagador.ViewModels
         public string Holder { get; set; }
 
         [Required]
-        [StringLength(16)]
+        [StringLength(19)]
         public string CardNumber { get; set; }
 
         [Required]
-        //[FutureDate]
         public string Expiration { get; set; }
 
         [Required]
@@ -48,13 +47,13 @@ namespace IntegracaoPagador.ViewModels
         [StringLength(3)]
         public string Country { get; set; }
 
-
         //Optativos
-
         public string PaymentMethodName { get; set; }
         public string Identity { get; set; }
         public string CustomerIdentityType { get; set; }
         public string CustomerEmail { get; set; }
+
+        public byte Status { get; set; }
 
         public SoapViewModel()
         {

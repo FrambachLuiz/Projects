@@ -1,0 +1,31 @@
+﻿@model IntegracaoPagador.ViewModels.SoapViewModel
+
+
+@{
+    ViewBag.Title = "SoapCapture";
+}
+
+<h2>SoapResult</h2>
+
+<ul class="gigs voffset4">
+    <h2>Transaction Return</h2>
+
+    <li>Amount : @Model.Amount</li>
+    <li>Country : @Model.Country</li>
+    <li>CardNumber: @Model.CardNumber</li>
+    <li>PaymnMethodName: @Model.PaymentMethodName</li>
+    <li>Currency: @Model.Currency</li>
+    <li>Number Payments: @Model.NumberPayments.ToString()</li>
+    <li>Status: @(Model.Status == 1 ? "Authorized" : "Captured") </li>
+
+</ul>
+
+@if (Model.Status == 1)
+{
+    <a href="@Url.Action(
+                 "Authorize",
+                 "Soap",
+                 new {merchantId = @Model.MerchanId, amount = @Model.Amount})">
+        Capturar
+    </a>
+}

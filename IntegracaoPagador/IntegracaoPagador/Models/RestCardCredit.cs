@@ -1,6 +1,8 @@
-﻿namespace IntegracaoPagador.Models
+﻿using IntegracaoPagador.Models.Interface;
+
+namespace IntegracaoPagador.Models
 {
-    public class RestCardCredit
+    public class RestCardCredit : IRestCardCredit
     {
         public string MerchantOrderId { get; set; }
 

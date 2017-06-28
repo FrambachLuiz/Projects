@@ -20,12 +20,30 @@ namespace IntegracaoPagador.Controllers
         public ActionResult Authorize(SoapViewModel viewModel)
         {
             var service = new PagadorTransactionSoapClient();
-            var response = service.AuthorizeTransaction(AddingParameters(viewModel));
+            var response = service.AuthorizeTransaction(AddingAuthorizeParameters(viewModel));
 
             if (response.Success)
             {
-                return View("SoapCapture", GetOrder(response.OrderData.BraspagOrderId));
+                var viewReturn = GetOrder(response.OrderData.BraspagOrderId);
+
+                return View("SoapCapture", viewReturn);
             }
+
+            MessageBox.Show("Algo deu errado!");
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Authorize(string content , string amount )
+        {
+            var response = CaptureOrder(content);
+
+          //  if (response.Success)
+         //   {
+                
+          //      var viewReturn = GetOrder(response.OrderData.BraspagOrderId);
+
+           //     return View("SoapCapture", viewReturn);
+          //  }
 
             MessageBox.Show("Algo deu errado!");
             return RedirectToAction("Index", "Home");
@@ -33,7 +51,7 @@ namespace IntegracaoPagador.Controllers
 
 
         //POST PARAMETERS
-        public AuthorizeTransactionRequest AddingParameters(SoapViewModel soapCreditCard)
+        public AuthorizeTransactionRequest AddingAuthorizeParameters(SoapViewModel soapCreditCard)
         {
             var serviceOrderData = new OrderDataRequest
             {
@@ -57,8 +75,8 @@ namespace IntegracaoPagador.Controllers
                 Currency = soapCreditCard.Currency,
                 Country = soapCreditCard.Country,
                 NumberOfPayments = (short)soapCreditCard.NumberPayments,
-                PaymentPlan = (byte)soapCreditCard.PaymentMethod,
-                TransactionType = 1,
+                PaymentPlan = 0, // cash
+                TransactionType = 1, // preauth
                 CardHolder = soapCreditCard.CustomerName,
                 CardNumber = soapCreditCard.CardNumber,
                 CardSecurityCode = soapCreditCard.SecurityCode,
@@ -78,8 +96,11 @@ namespace IntegracaoPagador.Controllers
         }
 
 
+        //GET SERVICE
         public SoapViewModel GetOrder(Guid orderId)
         {
+            object soapModel = null;
+
             var serviceOrderDataRequest =
                 new PagadorQuery.OrderDataRequest
                 {
@@ -95,7 +116,7 @@ namespace IntegracaoPagador.Controllers
             if (!resultGet.Success) return null;
 
             var collection = resultGet.TransactionDataCollection[0];
-            var soapModel = new SoapViewModel
+            soapModel = new SoapViewModel
             {
                 Amount = (int)collection.Amount,
                 Country = collection.Country,
@@ -105,7 +126,43 @@ namespace IntegracaoPagador.Controllers
                 NumberPayments = collection.NumberOfPayments
             };
 
-            return soapModel;
+            return (SoapViewModel) soapModel;
+        }
+
+
+        //CAPTURE SERVICE
+        public ActionResult CaptureOrder(string merchanId)
+        {
+            var service = new PagadorTransactionSoapClient();
+            var response = service.CaptureCreditCardTransaction(AddingCaptureParameters(merchanId));
+
+            if (response.Success)
+            {
+                var viewReturn = GetOrder(response.CorrelationId);
+
+                return View("SoapCapture", viewReturn);
+            }
+
+            MessageBox.Show("Algo deu errado!");
+            return RedirectToAction("Index", "Home");
+        }
+
+        private static CaptureCreditCardTransactionRequest AddingCaptureParameters(string merchanId)
+        {
+            var transactionData = new TransactionDataRequest
+            {
+                BraspagTransactionId = new Guid(merchanId)
+            };
+
+           var captureRequest = new CaptureCreditCardTransactionRequest
+            {
+                RequestId = new Guid("00000000-0000-0000-0000-000000000000"),
+                Version = "1.0",
+                MerchantId = new Guid(merchanId),
+                TransactionDataCollection = new[] { transactionData }
+           };
+
+            return captureRequest;
         }
     }
 }

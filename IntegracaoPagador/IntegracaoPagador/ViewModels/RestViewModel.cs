@@ -4,6 +4,7 @@ namespace IntegracaoPagador.ViewModels
 {
     public class RestViewModel
     {
+        public string MerchantId { get; set; }
         [Required]
         public string Name { get; set; }
 
@@ -33,5 +34,7 @@ namespace IntegracaoPagador.ViewModels
 
         [Required]
         public string Brand { get; set; }
+
+        public byte Status { get; set; }
     }
 }
