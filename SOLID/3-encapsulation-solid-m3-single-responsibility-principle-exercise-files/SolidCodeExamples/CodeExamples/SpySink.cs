@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Serilog.Core;
@@ -27,5 +28,7 @@ namespace Ploeh.Samples.Encapsulation.CodeExamples
         {
             get { return this.events; }
         }
+
+        
     }
 }
